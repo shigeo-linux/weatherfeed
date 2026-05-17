@@ -1,0 +1,8 @@
+[Unit]
+Description=Weatherfeed — hourly weather check and Telegram notifications
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/weatherfeed/runner.py

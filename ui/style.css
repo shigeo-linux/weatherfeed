@@ -1,0 +1,60 @@
+/* weatherfeed stylesheet */
+
+window {
+    background-color: #f5f4f0;
+}
+
+.status-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd9d0;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.status-ok { color: #2e7d32; font-weight: bold; }
+.status-error { color: #c62828; font-weight: bold; }
+.status-pending { color: #7a7060; }
+
+.section-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: #3a3020;
+    margin-top: 4px;
+}
+
+.field-label {
+    color: #2a2218;
+    font-size: 13px;
+}
+
+.meta-label {
+    font-size: 12px;
+    color: #7a7060;
+}
+
+.action-btn {
+    background-color: #c8a96e;
+    color: #1e1c18;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+    padding: 6px 18px;
+}
+
+.action-btn:hover { background-color: #d4b87a; }
+.action-btn:disabled { background-color: #d0ccc4; color: #8a8880; }
+
+.status-bar {
+    background-color: #e8e4dc;
+    border-top: 1px solid #d0ccc4;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: #6a6860;
+}
+
+spinner { color: #c8a96e; }
+
+radiobutton label {
+    color: #2a2218;
+    font-size: 13px;
+}

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Weatherfeed
+GenericName=Weather Digest
+Comment=Weather forecasts and severe weather alerts sent to Telegram
+Exec=python3 /opt/weatherfeed/weatherfeed.py
+Icon=weatherfeed
+Terminal=false
+Categories=Network;Utility;
+Keywords=weather;telegram;forecast;alerts;
+StartupNotify=true
