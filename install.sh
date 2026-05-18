@@ -33,6 +33,9 @@ exec python3 /opt/weatherfeed/weatherfeed.py "$@"
 EOF
 sudo chmod +x /usr/local/bin/weatherfeed
 
+echo "Creating config directory..."
+mkdir -p "$HOME/.config/${APP_NAME}"
+
 echo "Installing systemd user timer..."
 mkdir -p "${SYSTEMD_USER_DIR}"
 cp "${INSTALL_DIR}/weatherfeed.service" "${SYSTEMD_USER_DIR}/weatherfeed.service"
