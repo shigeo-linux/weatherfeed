@@ -10,10 +10,12 @@ import logging
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from config import Config, LOG_FILE
+from config import Config, LOG_FILE, CONFIG_DIR
 from weather_client import get_forecast
 from formatter import format_morning_report, format_alert, check_severe_now
 from telegram_client import send_message, TelegramError
+
+os.makedirs(CONFIG_DIR, exist_ok=True)
 
 logging.basicConfig(
     filename=LOG_FILE,
