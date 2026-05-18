@@ -40,10 +40,15 @@ echo "Installing systemd user timer..."
 mkdir -p "${SYSTEMD_USER_DIR}"
 cp "${INSTALL_DIR}/weatherfeed.service" "${SYSTEMD_USER_DIR}/weatherfeed.service"
 cp "${INSTALL_DIR}/weatherfeed.timer" "${SYSTEMD_USER_DIR}/weatherfeed.timer"
+sudo loginctl enable-linger "$(whoami)"
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
-systemctl --user daemon-reload
-systemctl --user enable weatherfeed.timer
-systemctl --user start weatherfeed.timer
+export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
+if systemctl --user daemon-reload 2>/dev/null; then
+    systemctl --user enable weatherfeed.timer
+    systemctl --user start weatherfeed.timer
+else
+    echo "Note: Timer files installed. Run 'systemctl --user enable --now weatherfeed.timer' after logging in."
+fi
 
 echo ""
 echo "=== Installation complete! ==="
