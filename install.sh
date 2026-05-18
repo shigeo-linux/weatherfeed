@@ -40,6 +40,7 @@ echo "Installing systemd user timer..."
 mkdir -p "${SYSTEMD_USER_DIR}"
 cp "${INSTALL_DIR}/weatherfeed.service" "${SYSTEMD_USER_DIR}/weatherfeed.service"
 cp "${INSTALL_DIR}/weatherfeed.timer" "${SYSTEMD_USER_DIR}/weatherfeed.timer"
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 systemctl --user daemon-reload
 systemctl --user enable weatherfeed.timer
 systemctl --user start weatherfeed.timer
