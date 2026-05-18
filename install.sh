@@ -9,13 +9,16 @@ SYSTEMD_USER_DIR="$HOME/.config/systemd/user"
 echo "=== Installing ${APP_NAME} ==="
 
 sudo apt-get update -qq
-sudo apt-get install -y python3-gi python3-gi-cairo gir1.2-gtk-3.0 python3-requests
+sudo apt-get install -y python3-gi python3-gi-cairo gir1.2-gtk-3.0 python3-requests python3-venv
 
 echo "Copying application files..."
 sudo mkdir -p "${INSTALL_DIR}"
 sudo cp -r "$(dirname "$0")"/* "${INSTALL_DIR}/"
 sudo chmod +x "${INSTALL_DIR}/weatherfeed.py"
 sudo chmod +x "${INSTALL_DIR}/runner.py"
+
+echo "Creating virtual environment..."
+sudo python3 -m venv --system-site-packages "${INSTALL_DIR}/venv"
 
 echo "Installing icon..."
 sudo mkdir -p /usr/share/icons/hicolor/scalable/apps
@@ -29,7 +32,7 @@ sudo update-desktop-database "${DESKTOP_DIR}" 2>/dev/null || true
 echo "Creating launcher..."
 sudo tee /usr/local/bin/weatherfeed > /dev/null << 'EOF'
 #!/bin/bash
-exec python3 /opt/weatherfeed/weatherfeed.py "$@"
+exec /opt/weatherfeed/venv/bin/python3 /opt/weatherfeed/weatherfeed.py "$@"
 EOF
 sudo chmod +x /usr/local/bin/weatherfeed
 
